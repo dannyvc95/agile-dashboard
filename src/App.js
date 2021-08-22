@@ -1,19 +1,28 @@
 import React from "react";
-import { Container, Footer, } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
-import PageHeader from "./components/PageHeader";
-import PageContent from "./components/PageContent";
-
+import { Container, Content } from "rsuite";
+import Header from "./components/Header";
+import Navigation from "./components/Navigation";
+import Home from "./pages/Home";
+import { Route, Switch } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
 
 const App = () => {
   return (
     <>
       <Container>
-        <PageHeader/>
+        <Header />
         <Container>
-          <PageContent/>
+          <Navigation />
+          <Content style={{ paddingLeft: "5rem", paddingTop: "1rem", textAlign: "left" }}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/users" component={Users} />
+            </Switch>
+          </Content>
         </Container>
-        <Footer>2021 KK's Group ©</Footer>
       </Container>
     </>
   );
