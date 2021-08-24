@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import { Route, Switch } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
+import Projects from "./pages/Projects";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
               <Route exact path="/" component={Home} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/users" component={Users} />
+              <Route path="/projects" component={Projects} />
             </Switch>
           </Content>
         </Container>

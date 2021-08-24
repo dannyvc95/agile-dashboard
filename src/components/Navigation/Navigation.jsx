@@ -30,6 +30,9 @@ const Navigation = () => {
             <Nav.Item onSelect={() => history.push("/users")} icon={<Icon icon="user" />}>
               Users
             </Nav.Item>
+            <Nav.Item onSelect={() => history.push("/projects")} icon={<Icon icon="project" />}>
+              Projects
+            </Nav.Item>
           </Nav>
         </Sidenav>
         <Toggle />
