@@ -1,32 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
-import { Dropdown, Icon, Nav, Navbar } from "rsuite";
+import { Dropdown, Nav, Navbar,Button } from "rsuite";
+import { FaMoon } from "react-icons/fa";
+import { FiSun } from "react-icons/fi";
 
 const Header = () => {
   const user = "User";
   const history = useHistory();
+  const [isDark, setIsDark] = useState(true);
+  document.getElementById("body").setAttribute("class", isDark ? "rs-theme-dark" : "");
+
   return (
     <>
-      <Navbar style={{ backgroundColor: "#1a2336" }} appearance="inverse">
-        <Navbar.Header>
-          <a style={{ padding: "18px 20px", display: "inline-block" }} href="/">
-            <Icon icon="dashboard" />
+      <Navbar style={{ backgroundColor: isDark ? "#596987   " : "#1a2336" }} appearance="inverse">
+        <Navbar.Brand>
+          <a style={{ padding: "0px 20px", display: "inline-block", color: "white"}} href="/">
             &nbsp;AGILE DASHBOARD
           </a>
-        </Navbar.Header>
-        <Navbar.Body>
+        </Navbar.Brand>
           <Nav>
-            <Nav.Item onSelect={() => history.push("/")} icon={<Icon icon="home" />}>
-              Home
-            </Nav.Item>
+            <Nav.Item onSelect={() => history.push("/")}>Home</Nav.Item>
           </Nav>
           <Nav pullRight>
-            <Dropdown icon={<Icon icon="user" />} title={user}>
-              <Dropdown.Item icon={<Icon icon="setting"></Icon>}>Settings</Dropdown.Item>
-              <Dropdown.Item icon={<Icon icon="sign-out"></Icon>}>Sign out</Dropdown.Item>
+            <Button
+              onClick={() => {
+                setIsDark(!isDark);
+              }}
+              style={{marginTop: "0.6rem", marginRight: "0.5rem", backgroundColor:  isDark ? "#0f131a" : ""}}
+            >
+              {isDark ? <FaMoon /> : <FiSun />}
+            </Button>
+            <Dropdown title={user}>
+              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Item>Sign out</Dropdown.Item>
             </Dropdown>
           </Nav>
-        </Navbar.Body>
       </Navbar>
     </>
   );

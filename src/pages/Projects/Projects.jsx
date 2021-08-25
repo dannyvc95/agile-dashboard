@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Button, Table, Icon } from "rsuite";
+import { Button, Table } from "rsuite";
 
 const { Column, HeaderCell, Cell } = Table;
 
@@ -99,7 +99,7 @@ const Projects = () => {
        appearance="link"
        color="green"
        onClick={() => alert("Creating a new Project")}>
-       <Icon icon="plus-square-o" /> Add New
+       Add New
       </Button>
     </>
     

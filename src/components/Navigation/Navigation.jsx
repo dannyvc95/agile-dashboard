@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Icon, Nav, Navbar, Sidebar, Sidenav } from "rsuite";
+import { Nav, Navbar, Sidebar, Sidenav } from "rsuite";
 
 const Navigation = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -12,7 +12,6 @@ const Navigation = () => {
       <Navbar appearance="subtle">
         <Nav pullRight>
           <Nav.Item onClick={() => setIsExpanded(!isExpanded)} style={{ width: 55, textAlign: "center" }}>
-            <Icon icon={isExpanded ? "angle-left" : "angle-right"} />
           </Nav.Item>
         </Nav>
       </Navbar>
@@ -24,13 +23,13 @@ const Navigation = () => {
       <Sidebar collapsible style={{ display: "flex", flexDirection: "column" }} width={isExpanded ? 250 : 55}>
         <Sidenav expanded={isExpanded} appearance="subtle">
           <Nav>
-            <Nav.Item onSelect={() => history.push("/dashboard")} icon={<Icon icon="dashboard" />}>
+            <Nav.Item onSelect={() => history.push("/dashboard")} >
               Dashboard
             </Nav.Item>
-            <Nav.Item onSelect={() => history.push("/users")} icon={<Icon icon="user" />}>
+            <Nav.Item onSelect={() => history.push("/users")} >
               Users
             </Nav.Item>
-            <Nav.Item onSelect={() => history.push("/projects")} icon={<Icon icon="project" />}>
+            <Nav.Item onSelect={() => history.push("/projects")} >
               Projects
             </Nav.Item>
           </Nav>

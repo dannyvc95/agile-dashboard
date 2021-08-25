@@ -1,6 +1,5 @@
 import React from "react";
-import "rsuite/dist/styles/rsuite-default.css";
-import { Container, Content } from "rsuite";
+import { Container, Content} from "rsuite";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
@@ -8,6 +7,7 @@ import { Route, Switch } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import Projects from "./pages/Projects";
+import "./App.less";
 
 const App = () => {
   return (
