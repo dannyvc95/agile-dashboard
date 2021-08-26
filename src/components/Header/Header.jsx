@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 import { Dropdown, Nav, Navbar,Button } from "rsuite";
-import { FaMoon } from "react-icons/fa";
-import { FiSun } from "react-icons/fi";
+import { FaCog, FaMoon, FaSignOutAlt, FaHome } from "react-icons/fa";
+import { FiSun, FiUser } from "react-icons/fi";
 
 const Header = () => {
   const user = "User";
@@ -19,7 +19,7 @@ const Header = () => {
           </a>
         </Navbar.Brand>
           <Nav>
-            <Nav.Item onSelect={() => history.push("/")}>Home</Nav.Item>
+            <Nav.Item onSelect={() => history.push("/")}> <FaHome /> Home</Nav.Item>
           </Nav>
           <Nav pullRight>
             <Button
@@ -30,9 +30,9 @@ const Header = () => {
             >
               {isDark ? <FaMoon /> : <FiSun />}
             </Button>
-            <Dropdown title={user}>
-              <Dropdown.Item>Settings</Dropdown.Item>
-              <Dropdown.Item>Sign out</Dropdown.Item>
+            <Dropdown title={user} icon={ <FiUser /> }>
+              <Dropdown.Item icon={ <FaCog /> }> Settings</Dropdown.Item>
+              <Dropdown.Item icon={ <FaSignOutAlt /> }> Sign out</Dropdown.Item>
             </Dropdown>
           </Nav>
       </Navbar>
