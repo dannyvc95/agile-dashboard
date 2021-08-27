@@ -10,6 +10,7 @@ import Projects from "./pages/Projects";
 import "./App.less";
 
 const App = () => {
+  localStorage.getItem("isDark") ?? localStorage.setItem("isDark", "false");
   return (
     <>
       <Container>
