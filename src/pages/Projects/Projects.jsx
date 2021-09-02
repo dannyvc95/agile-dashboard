@@ -1,5 +1,6 @@
 import React,{ useEffect, useState }  from "react";
 import { Button, Table } from "rsuite";
+import { FiPlusSquare } from "react-icons/fi";
 
 const { Column, HeaderCell, Cell } = Table;
 
@@ -34,19 +35,19 @@ const Projects = () => {
         id: 1,
         name: "Boruto's Abortion",
         description: "Prevention of future boring chaos",
-        currentSprint: "week2",
+        currentSprint: "week 2",
       },
       {
         id: 2,
         name: "Ero Senin Last Book",
         description: "Release of the latest master piece",
-        currentSprint: "week3",
+        currentSprint: "week 3",
       },
       {
         id: 3,
         name: "Itachi's Revival",
         description: "Revival of one of the greatests heroes",
-        currentSprint: "week1",
+        currentSprint: "week 1",
       },
     ]);
     setTimeout(() => setIsLoading(false), 1000);
@@ -98,7 +99,7 @@ const Projects = () => {
        appearance="link"
        color="green"
        onClick={() => alert("Creating a new Project")}>
-       Add New
+       <FiPlusSquare /> Add New
       </Button>
     </>
     
