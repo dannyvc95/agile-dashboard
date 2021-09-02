@@ -9,7 +9,7 @@ const Cards = () => {
     type: "Issue",
     user: "sasuke.uchiha@konoha.com",
     sprint: "In the next war",
-    description: "Save Konoha Village",
+    description: "Save Konoha Village of the inminent atttack, according to the information Orochimaru is comming from Nort, we will sent Naruto and Sakura in that direcion, but you need to be in the West just to be sure.",
     times: {
       0: "13/02 Itachi attack Konoha",
       1: "15/02 Sasuke attack Naruto",

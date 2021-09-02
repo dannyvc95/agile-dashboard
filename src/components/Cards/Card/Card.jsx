@@ -1,9 +1,20 @@
 import React, { useState } from "react";
-import { Col, Panel, Tag, Timeline, Animation, Button } from "rsuite";
+import {
+  Col,
+  Panel,
+  Tag,
+  Timeline,
+  Modal,
+  Button,
+  ButtonToolbar,
+  Divider,
+} from "rsuite";
 
 const Card = ({ data }) => {
-  const [show, setShow] = useState(false);
-  const handleToggle = () => setShow(!show);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const checktype = () => {
     switch (data.type) {
@@ -16,25 +27,69 @@ const Card = ({ data }) => {
     }
   };
 
+  data.description = data.description.slice(0, 150) + "...";
+
   return (
     <>
-      <Col md={6} sm={12} style={{marginTop: "0.6rem", marginRight: "0.5rem"}}>
-        <Panel bordered header={data.title}>
-        <div><Tag size= "lg" color={checktype()}> {data.type} </Tag> <p>User: {data.user}</p> </div>
-        
-          <p>Sprint: {data.sprint}</p>
-          <p>Description: {data.description}</p>
+      <Col
+        md={6}
+        sm={12}
+        style={{ marginTop: "0.6rem", marginRight: "0.5rem" }}
+      >
+        <Panel bordered shaded header={data.title} id="hola perro">
+          <div style={{ float: "right" }}>
+            <strong>{data.user}</strong>
+          </div>
+          <br />
+          <div>
+            <Tag size="lg" color={checktype()}>
+              {data.type}
+            </Tag>
+            <strong>
+              <span style={{ float: "right", color: "green" }}>
+                {data.sprint}
+              </span>
+            </strong>
+          </div>
 
-          <Button onClick={handleToggle}>History</Button>
-          <Animation.Collapse in={show}>
-            <Timeline>
-              {Object.values(data.times).slice(0, 4).map((time) => {
-                return <>
-                <Timeline.Item>{time}</Timeline.Item>
-                </>
-              })}
-            </Timeline>
-          </Animation.Collapse>
+          <div style={{ height: "4.5rem", margin: "auto" }}>
+            <strong>Description: </strong>
+            {data.description}
+          </div>
+
+          <ButtonToolbar>
+            <Divider>
+              <Button onClick={handleOpen} style={{ right: "0px" }}>
+                History
+              </Button>
+            </Divider>
+          </ButtonToolbar>
+
+          <Modal overflow={false} open={open} onClose={handleClose}>
+            <Modal.Header>
+              <Modal.Title>
+                <strong>History:</strong> {data.title}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Timeline>
+                {Object.values(data.times)
+                  .slice(0, 4)
+                  .map((time) => {
+                    return (
+                      <>
+                        <Timeline.Item>{time}</Timeline.Item>
+                      </>
+                    );
+                  })}
+              </Timeline>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={handleClose} appearance="primary">
+                Ok
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </Panel>
       </Col>
     </>
