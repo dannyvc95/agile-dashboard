@@ -3,12 +3,13 @@ import {
   Col,
   Panel,
   Tag,
-  Timeline,
-  Modal,
+  Drawer,
   Button,
   ButtonToolbar,
-  Divider,
+  Divider
 } from "rsuite";
+
+import DetailCard from "../DetailCard";
 
 const Card = ({ data }) => {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ const Card = ({ data }) => {
     }
   };
 
-  data.description = data.description.slice(0, 150) + "...";
+  let shortdescription = data.description.slice(0, 150) + "...";
 
   return (
     <>
@@ -54,42 +55,29 @@ const Card = ({ data }) => {
 
           <div style={{ height: "4.5rem", margin: "auto" }}>
             <strong>Description: </strong>
-            {data.description}
+            {shortdescription}
           </div>
 
           <ButtonToolbar>
             <Divider>
               <Button onClick={handleOpen} style={{ right: "0px" }}>
-                History
+                Details
               </Button>
             </Divider>
           </ButtonToolbar>
 
-          <Modal overflow={false} open={open} onClose={handleClose}>
-            <Modal.Header>
-              <Modal.Title>
-                <strong>History:</strong> {data.title}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <Timeline>
-                {Object.values(data.times)
-                  .slice(0, 4)
-                  .map((time) => {
-                    return (
-                      <>
-                        <Timeline.Item>{time}</Timeline.Item>
-                      </>
-                    );
-                  })}
-              </Timeline>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={handleClose} appearance="primary">
-                Ok
-              </Button>
-            </Modal.Footer>
-          </Modal>
+          {/* Card in left side */}
+          <Drawer open={open} onClose={handleClose}>
+            <Drawer.Header style={{ backgroundColor: "#1a2336" }}>
+              <Drawer.Title style={{ marginTop: "1.5rem", color: "white" }}>
+                <strong style={{ fontSize: "2rem" }}>{data.title}</strong>
+              </Drawer.Title>
+              <strong style={{ fontSize: "1.2rem", color: "white" }}>
+                {data.user}
+              </strong>
+            </Drawer.Header>
+            <DetailCard detailData={data} />
+          </Drawer>
         </Panel>
       </Col>
     </>
